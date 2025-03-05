@@ -56,7 +56,7 @@ The script will process each row and display real-time progress and error messag
 ```
 2025_02_batchimport/
 ├── data/
-│   └── datasets.rdf
+│   └── datasets.xml
 ├── src/
 │   ├── config.py
 │   ├── dcat_properies_utils.py
