@@ -56,11 +56,12 @@ The script will process each row and display real-time progress and error messag
 ```
 2025_02_batchimport/
 ├── data/
-│   └── datasets.xlsx
+│   └── datasets.rdf
 ├── src/
 │   ├── config.py
-│   ├── create_template.py
-│   └── import_datasets.py
+│   ├── dcat_properies_utils.py
+│   ├── import_datasets.py
+│   └── mappings.py
 ├── requirements.txt
 └── README.md
 ```
