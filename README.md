@@ -1,6 +1,6 @@
-# I14Y Dataset Import Tool
+# DCAT Dataset in xml/rdf format Import Tool
 
-A Python-based tool for importing DCAT datasets in rdf format into the I14Y platform of the Swiss Federal Statistical Office (BFS).
+A Python-based tool for importing DCAT datasets in xml/rdf format into the I14Y platform of the Swiss Federal Statistical Office (BFS).
 
 ## Features
 - Import DCAT datasets from rdf files to I14Y API
