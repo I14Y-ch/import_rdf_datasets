@@ -11,5 +11,9 @@ DEFAULT_PUBLISHER = {
 # File paths
 TEMPLATE_PATH = "data/datasets.rdf"
 
+# File format (.xml and .rdf -> "xml", .ttl -> "ttl")
+
+FILE_FORMAT = "xml"
+
 # Default language settings
 DEFAULT_LANGUAGE = "de"
