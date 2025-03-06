@@ -46,8 +46,6 @@ def extract_dataset(graph, dataset_uri):
         "temporalCoverage": get_temporal_coverage(graph, dataset_uri), 
         "frequency": get_frequency(graph, dataset_uri),
         "isReferencedBy": get_is_referenced_by(graph, dataset_uri),
-        "qualifiedAttributions": get_qualified_attributions(graph, dataset_uri),
-        "qualifiedRelations": get_qualified_relations(graph, dataset_uri),
         "relations": get_relations(graph, dataset_uri),
         "spatial": get_spatial(graph, dataset_uri),
         "version": get_literal(graph, dataset_uri, dcat3.version),
