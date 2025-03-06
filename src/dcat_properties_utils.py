@@ -69,10 +69,9 @@ def get_multilingual_keywords(graph, subject, predicate):
         keywords.append(keyword)
     return keywords
 
-
 def get_access_services(graph, subject):
     """Retrieves accessServices from RDF graph."""
-    return [{"id": str(obj)} for obj in graph.objects(subject, URIRef("http://example.org/accessServices"))]
+    return [{"id": str(obj)} for obj in graph.objects(subject, DCAT.accessService)]
 
 def get_conforms_to(graph, subject):
     """Retrieves conformsTo from RDF graph."""
@@ -100,15 +99,33 @@ def get_frequency(graph, subject):
     return {"code": frequency_uri.split("/")[-1]} if frequency_uri else None
 
 def get_themes(graph, subject, predicate):
-    """Retrieves a list of i14y codes for themes."""
+    """
+    Retrieves a list of unique i14y codes for themes.
+    Handles both literal values (e.g., "101") and URI values (e.g., "http://publications.europa.eu/resource/authority/data-theme/ECON").
+    Ensures that the collection does not contain repeated codes.
+    """
+    unique_codes = set()  
     themes = []
-    for theme_uri in graph.objects(subject, predicate):
-        theme_uri = str(theme_uri)
-        for code, uris in THEME_MAPPING.items():  
-            if theme_uri in uris: 
-                themes.append({"code": code})
-                break  
+
+    for theme in graph.objects(subject, predicate):
+        theme_str = str(theme) 
+        theme_code = None
+
+        if isinstance(theme, Literal):
+            theme_code = theme_str 
+
+        elif isinstance(theme, URIRef):
+      
+            for code, uris in THEME_MAPPING.items():
+                if theme_str in uris:
+                    theme_code = code
+                    break
+        if theme_code and theme_code not in unique_codes:
+            unique_codes.add(theme_code) 
+            themes.append({"code": theme_code})
+
     return themes
+
 def get_availability_code(availability_uri):
     """Maps an availability URI to its corresponding code using the vocabulary."""
     if not availability_uri:
@@ -123,7 +140,7 @@ def get_temporal_coverage(graph, subject):
     temporal_coverage = []
 
     for obj in graph.objects(subject, DCTERMS.temporal):
-        if (obj, RDF.type, DCAT.PeriodOfTime) in graph:
+        if (obj, RDF.type, DCTERMS.PeriodOfTime) in graph:
             start = get_literal(graph, obj, DCAT.startDate, is_date=True)
             end = get_literal(graph, obj, DCAT.endDate, is_date=True)
             if start or end:
@@ -146,7 +163,7 @@ def get_qualified_relations(graph, subject):
     """Retrieves qualifiedRelations from RDF graph."""
     relations = []
     for obj in graph.objects(subject, PROV.qualifiedRelation):
-        had_role = get_single_resource(graph, obj, DCAT.hadRole)
+        had_role = get_single_resource(graph, obj, PROV.hadRole)
         relation = get_single_resource(graph, obj, DCTERMS.relation)
         if had_role and relation:
             relations.append({
@@ -163,7 +180,7 @@ def get_qualified_attributions(graph, subject):
     attributions = []
     for obj in graph.objects(subject, PROV.qualifiedAttribution):
         agent = get_single_resource(graph, obj, PROV.agent)
-        had_role = get_single_resource(graph, obj, DCAT.hadRole)
+        had_role = get_single_resource(graph, obj, PROV.hadRole)
         if agent and had_role:
             attributions.append({
                 "agent": {"identifier": agent},
