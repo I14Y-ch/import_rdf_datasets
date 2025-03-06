@@ -1,4 +1,4 @@
-# DCAT Dataset in xml/rdf format Import Tool
+# DCAT Dataset in xml/rdf or ttl format Import Tool
 
 A Python-based tool for importing DCAT datasets in xml/rdf or ttl format into the I14Y platform of the Swiss Federal Statistical Office (BFS).
 
@@ -89,14 +89,14 @@ pip install -r requirements.txt
 ```
 
 4. Configure the application:
-   - Edit `src/config.py` with your I14Y API token and organization ID
+   - Edit `src/config.py` with your I14Y API token, organization ID and right file format ("xml" or "ttl")
 
 ## Usage
 
 ### Import Datasets
 
 1. Log in on the interoperability platform. Copy the token clicking on the profile symbol. Fill in the token in the file config.py. Also provide the identifier of your organsation.
-2. Place your RDF files in the data/ folder (xml or rdf)
+2. Place your RDF files in the data/ folder (.xml, .rdf or .ttl)
 3. Run the import script:
 
 ```bash
