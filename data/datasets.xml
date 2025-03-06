@@ -9,11 +9,9 @@
     xmlns:adms="http://www.w3.org/ns/adms#"
     xmlns:spdx="http://spdx.org/rdf/terms#"
     xmlns:schema="http://schema.org/"
-    xmlns:r5r="http://data.europa.eu/r5r/"
+    xmlns:r5r="http://data.europa.eu/r5r/" >
 
-    <!-- Dataset -->
     <dcat:Dataset rdf:about="http://example.org/dataset/1">
-        <!-- Basic Metadata -->
         <dcterms:identifier>example-dataset-1</dcterms:identifier>
         <dcterms:title xml:lang="en">Dataset Example</dcterms:title>
         <dcterms:description xml:lang="en">This is an example dataset for demonstration purposes.</dcterms:description>
@@ -33,12 +31,12 @@
         <!-- Distributions -->
         <dcat:distribution>
             <dcat:Distribution rdf:about="http://example.org/distribution/1">
-                <dcterms:title xml:lang="en">Example Distribution (PDF)</dcterms:title>
-                <dcterms:description xml:lang="en">This is an example distribution in PDF format.</dcterms:description>
-                <dcterms:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+                <dcterms:title xml:lang="en">Example Distribution (json)</dcterms:title>
+                <dcterms:description xml:lang="en">This is an example distribution in JSON format.</dcterms:description>
+                <dcterms:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
                 <dcat:downloadURL rdf:resource="http://example.org/distribution/1/download"/>
-                <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
-                <dcterms:license rdf:resource="http://example.org/licenses/example-license"/>
+                <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+                <dcterms:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"/>
                 <r5r:availability rdf:resource="http://data.europa.eu/r5r/availability/available"/>
                 <dcterms:issued>2023-01-01T00:00:00Z</dcterms:issued>
                 <dcterms:modified>2023-10-01T12:00:00Z</dcterms:modified>
@@ -79,7 +77,8 @@
         <dcterms:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/ANNUAL"/>
 
         <!-- Themes -->
-        <dcat:theme rdf:resource="http://example.org/themes/example-theme"/>
+        <dcat:theme>101</dcat:theme>
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
 
         <!-- Spatial Coverage -->
         <dcterms:spatial rdf:resource="http://example.org/spatial/example-region"/>
@@ -102,7 +101,7 @@
         <!-- Qualified Relations -->
         <prov:qualifiedRelation>
             <prov:Relationship>
-                <prov:hadRole rdf:resource="http://example.org/roles/example-role"/>
+                <prov:hadRole rdf:resource="http://www.iana.org/assignments/relation/original"/>
                 <dcterms:relation rdf:resource="http://example.org/related-dataset/1"/>
             </prov:Relationship>
         </prov:qualifiedRelation>
@@ -110,8 +109,8 @@
         <!-- Qualified Attributions -->
         <prov:qualifiedAttribution>
             <prov:Attribution>
-                <prov:agent rdf:resource="http://example.org/agents/example-agent"/>
-                <prov:hadRole rdf:resource="http://example.org/roles/example-role"/>
+                <prov:agent>i14y-test-organisation</prov:agent>
+                <prov:hadRole>resourceProvider</prov:hadRole>
             </prov:Attribution>
         </prov:qualifiedAttribution>
 
