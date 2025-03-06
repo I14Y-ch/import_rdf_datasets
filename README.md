@@ -68,7 +68,7 @@ prov.qualifiedAttribution and prov.qualifiedRelation are not supported automatic
 1. Clone this repository:
 ```bash
 git clone [repository-url]
-cd bfs/2025_02_batchimport
+cd import_rdf_datasets
 ```
 
 2. (Optional but recommended) Create and activate a virtual environment:
@@ -108,7 +108,7 @@ The script will process each row and display real-time progress and error messag
 ## File Structure
 
 ```
-2025_02_batchimport/
+import_rdf_datasets/
 ├── data/
 │   └── datasets.xml
 ├── src/
