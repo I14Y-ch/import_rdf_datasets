@@ -31,6 +31,7 @@ def extract_dataset(graph, dataset_uri):
         "identifier": get_literal(graph, dataset_uri, DCTERMS.identifier),
         "title": get_multilingual_literal(graph, dataset_uri, DCTERMS.title),
         "description": get_multilingual_literal(graph, dataset_uri, DCTERMS.description),
+        "accessRights": {"code": "PUBLIC"},  
         "issued": get_literal(graph, dataset_uri, DCTERMS.issued, is_date=True),
         "modified": get_literal(graph, dataset_uri, DCTERMS.modified, is_date=True),
         "publisher": DEFAULT_PUBLISHER, 
@@ -39,7 +40,6 @@ def extract_dataset(graph, dataset_uri):
         "distributions": extract_distributions(graph, dataset_uri),
         "identifiers": [get_literal(graph, dataset_uri, DCTERMS.identifier)],
         "languages": get_languages(graph, dataset_uri, DCTERMS.language),
-        "accessRights": {"code": "PUBLIC"},  
         "contactPoints": extract_contact_points(graph, dataset_uri),
         "documentation": get_resource_list(graph, dataset_uri, FOAF.page),
         "images": get_resource_list(graph, dataset_uri, SCHEMA.image),
@@ -53,7 +53,7 @@ def extract_dataset(graph, dataset_uri):
         "version": get_literal(graph, dataset_uri, dcat3.version),
         "versionNotes": get_multilingual_literal(graph, dataset_uri, ADMS.versionNotes),
         "conformsTo": get_conforms_to(graph, dataset_uri),
-        "themes": get_themes(graph, dataset_uri, DCAT.theme)
+        "themes": get_themes(graph, dataset_uri, DCAT.theme), 
     }
     return dataset
 
@@ -151,6 +151,7 @@ def main():
         print(f"Processing dataset: {dataset['identifier']}")
         try:
             payload = create_dataset_payload(dataset)
+            print(payload)
             response = submit_to_api(payload)
             print(f"Success - Dataset ID: {response}\n")
             success_count += 1
