@@ -11,7 +11,7 @@ dcat3 = Namespace("http://www.w3.org/ns/dcat#")
 def parse_rdf_file(file_path):
     """Parses an RDF file and extracts datasets."""
     graph = Graph()
-    graph.parse(file_path, format="xml")  
+    graph.parse(file_path, format=FILE_FORMAT)  
     
     datasets = []
     for dataset_uri in graph.subjects(RDF.type, DCAT.Dataset):
