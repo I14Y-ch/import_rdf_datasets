@@ -4,6 +4,14 @@ A Python-based tool for importing DCAT datasets in xml/rdf format into the I14Y 
 
 ## Features
 - Import DCAT datasets from xml/rdf files to I14Y API
+- 
+| Property | Description | Requirement level | 
+| ----| ---- | ---- | 
+| __title__ | string | mandatory |
+| __description__ | string | mandatory | 
+| __accessRights__ | string (to be chosen from:  [PUBLIC, NON_PUBLIC, CONFIDENTIAL, RESTRICTED](http://publications.europa.eu/resource/authority/access-right)) | mandatory | 
+| __publisher__ | id: string [mandatory] | mandatory |
+
 
 ## Prerequisites
 
@@ -42,8 +50,9 @@ pip install -r requirements.txt
 
 ### Import Datasets
 
-1. Log in on the interoperability platform. Copy the token clicking on the profile symbol. Fill in the token in the file config.py. Also provide the identifier of your organsation. 
-2. Run the import script:
+1. Log in on the interoperability platform. Copy the token clicking on the profile symbol. Fill in the token in the file config.py. Also provide the identifier of your organsation.
+2. Place your RDF files in the data/ folder.
+3. Run the import script:
 
 ```bash
 python src/import_datasets.py
