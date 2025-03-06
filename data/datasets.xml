@@ -38,6 +38,8 @@
                 <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
                 <dcterms:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"/>
                 <r5r:availability rdf:resource="http://data.europa.eu/r5r/availability/available"/>
+                <dcat:spatialResolutionInMeters>1000</dcat:spatialResolutionInMeters>
+                <dcat:temporalResolution>P1D</dcat:temporalResolution>
                 <dcterms:issued>2023-01-01T00:00:00Z</dcterms:issued>
                 <dcterms:modified>2023-10-01T12:00:00Z</dcterms:modified>
             </dcat:Distribution>
@@ -98,29 +100,8 @@
         <!-- Images -->
         <schema:image rdf:resource="http://example.org/dataset/1/image"/>
 
-        <!-- Qualified Relations -->
-        <prov:qualifiedRelation>
-            <prov:Relationship>
-                <prov:hadRole rdf:resource="http://www.iana.org/assignments/relation/original"/>
-                <dcterms:relation rdf:resource="http://example.org/related-dataset/1"/>
-            </prov:Relationship>
-        </prov:qualifiedRelation>
-
-        <!-- Qualified Attributions -->
-        <prov:qualifiedAttribution>
-            <prov:Attribution>
-                <prov:agent>i14y-test-organisation</prov:agent>
-                <prov:hadRole>resourceProvider</prov:hadRole>
-            </prov:Attribution>
-        </prov:qualifiedAttribution>
-
         <!-- Relations -->
         <dcterms:relation rdf:resource="http://example.org/related-dataset/2"/>
 
-        <!-- Spatial Resolution -->
-        <dcat:spatialResolutionInMeters>1000</dcat:spatialResolutionInMeters>
-
-        <!-- Temporal Resolution -->
-        <dcat:temporalResolution>P1D</dcat:temporalResolution>
     </dcat:Dataset>
 </rdf:RDF>
