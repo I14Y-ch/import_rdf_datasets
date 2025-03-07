@@ -28,7 +28,7 @@ def parse_rdf_file(file_path):
 def extract_dataset(graph, dataset_uri):
     """Extracts dataset details from RDF graph."""
     dataset = { 
-        "identifier": get_literal(graph, dataset_uri, DCTERMS.identifier),
+        "identifiers": get_literal(graph, dataset_uri, DCTERMS.identifier),
         "title": get_multilingual_literal(graph, dataset_uri, DCTERMS.title),
         "description": get_multilingual_literal(graph, dataset_uri, DCTERMS.description),
         "accessRights": {"code": "PUBLIC"},  
@@ -38,7 +38,6 @@ def extract_dataset(graph, dataset_uri):
         "landingPages": get_resource_list(graph, dataset_uri, DCAT.landingPage),
         "keywords": get_multilingual_keywords(graph, dataset_uri, DCAT.keyword),
         "distributions": extract_distributions(graph, dataset_uri),
-        "identifiers": [get_literal(graph, dataset_uri, DCTERMS.identifier)],
         "languages": get_languages(graph, dataset_uri, DCTERMS.language),
         "contactPoints": extract_contact_points(graph, dataset_uri),
         "documentation": get_resource_list(graph, dataset_uri, FOAF.page),
